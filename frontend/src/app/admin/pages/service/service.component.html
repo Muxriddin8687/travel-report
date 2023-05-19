@@ -1,0 +1,90 @@
+<div class="container-fluid">
+
+    <div class="pt-3 mb-5">
+        <div class="d-flex justify-content-between align-items-center">
+            <h3 class="mb-0">Xizmat turlari</h3>
+            <div>
+                <button (click)="addForm.reset();" data-mdb-toggle="modal" data-mdb-target="#add" class="btn btn-primary btn-sm me-2" type="button"><i class="fa fa-plus me-1"></i>Xizmat</button>
+            </div>
+        </div>
+        <hr class="my-0">
+    </div>
+
+    <h4 class="py-4 px-3 my-4 bg-danger text-white" *ngIf="showError">Bu xizmat bilan sayyohlik xizmati ro'yhatga olingan, oldin xizmatni o'chiring keyin buni o'chira olasiz!</h4>
+
+    <div class="row">
+        <div class="col-sm-11 col-md-6 mb-4">
+            <h6>Xizmatlar</h6>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover border mb-0">
+                    <thead>
+                        <tr>
+                            <th>№</th>
+                            <th>Nomi</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of services; let i = index">
+                            <td>{{ i + 1 }}</td>
+                            <td>{{ item.name }}</td>
+                            <td class="text-end">
+                                <button (click)="edit(item.id)" data-mdb-toggle="modal" data-mdb-target="#edit" type="button" class="btn btn-warning btn-sm me-2">
+                                    <i class="fa fa-pencil"></i>
+                                </button>
+                                <button (click)="delete(item.id)" type="button" class="btn btn-danger btn-sm">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- add modal -->
+<div class="modal fade" id="add" tabindex="-1" aria-labelledby="addLabel" data-mdb-backdrop="static"
+    data-mdb-keyboard="true" aria-hidden="true">
+    <div class="modal-dialog">
+        <form [formGroup]="addForm" (ngSubmit)="add()">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mx-auto" id="addLabel">Xizmat qo'shish</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="text" formControlName="name" placeholder="Nomi" class="form-control mb-4" required minlength="3">
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-warning" data-mdb-dismiss="modal">Bekor qilish</button>
+                    <button data-mdb-dismiss="modal" type="submit" [disabled]="addForm.invalid" class="btn btn-primary">Saqlash</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!-- edit modal -->
+<div class="modal fade" id="edit" tabindex="-1" aria-labelledby="editLabel" data-mdb-backdrop="static"
+    data-mdb-keyboard="true" aria-hidden="true">
+    <div class="modal-dialog">
+        <form [formGroup]="addForm" (ngSubmit)="update()">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mx-auto" id="editLabel">Xizmatni nomini o'zgartirish</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="text" [autofocus]="true" formControlName="name" placeholder="Nomi" class="form-control mb-4" required minlength="3">
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-warning" data-mdb-dismiss="modal">Bekor qilish</button>
+                    <button data-mdb-dismiss="modal" type="submit" [disabled]="addForm.invalid" class="btn btn-primary">Saqlash</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800");
+
+
+:root {
+    --white: #fff;
+    --light: #f5f5f5;
+    --main-light: #f1f1f1;
+
+    --black: #000;
+    --dark: #081F46;
+    --main-dark: #6d6d6f;
+
+    --theme-1: #C8B568;
+    --theme-2: #1266f1;
+    --theme-2-light: #4e8beb;
+    --theme-2-dark: #0e46a0;
+}
+
+
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+input,
+label,
+button,
+textarea {
+    font-family: "Poppins", sans-serif;
+    letter-spacing: 0.5px;
+}
+
+
+body {
+    min-width: 350px;
+}
+
+
+h2.section-title {
+    color: var(--theme-2) !important;
+    font-weight: 700;
+    margin-top: 80px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+
+.text-dark {
+    color: var(--dark) !important;
+}
+
+.text-black {
+    color: var(--black) !important;
+}
+
+
+.table>:not(caption)>*>* {
+    padding: 10px 15px;
+}
+
+
+@media screen and (max-width: 768px) {
+    h2.section-title {
+        font-weight: 600;
+        margin-top: 60px;
+        margin-bottom: 25px;
+    }
+}

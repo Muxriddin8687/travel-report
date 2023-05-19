@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Frontend</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <link rel="preconnect" href="http://localhost:4200/">
+
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- mdb css -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
+
+  <style>
+    #preloader {
+      overflow: hidden;
+      background-image: linear-gradient(145deg, #339b9e 0%, #68cc98 100%);
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      position: fixed;
+      z-index: 99999;
+      color: #fff;
+    }
+
+    #preloader .jumper {
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      display: block;
+      position: absolute;
+      margin: auto;
+      width: 50px;
+      height: 50px;
+    }
+
+    #preloader .jumper>div {
+      background-color: #fff;
+      width: 10px;
+      height: 10px;
+      border-radius: 100%;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      position: absolute;
+      opacity: 0;
+      width: 50px;
+      height: 50px;
+      -webkit-animation: jumper 1s 0s linear infinite;
+      animation: jumper 1s 0s linear infinite;
+    }
+
+    #preloader .jumper>div:nth-child(2) {
+      -webkit-animation-delay: 0.33333s;
+      animation-delay: 0.33333s;
+    }
+
+    #preloader .jumper>div:nth-child(3) {
+      -webkit-animation-delay: 0.66666s;
+      animation-delay: 0.66666s;
+    }
+
+    @-webkit-keyframes jumper {
+      0% {
+        opacity: 0;
+        -webkit-transform: scale(0);
+        transform: scale(0);
+      }
+
+      5% {
+        opacity: 1;
+      }
+
+      100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 0;
+      }
+    }
+
+    @keyframes jumper {
+      0% {
+        opacity: 0;
+        -webkit-transform: scale(0);
+        transform: scale(0);
+      }
+
+      5% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div id="preloader">
+    <div class="jumper">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <app-root></app-root>
+
+
+  <!-- mdb js -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+
+  <script type="text/javascript">
+    const load = document.getElementById("preloader");
+    window.addEventListener('load', () => {
+        if (load) {
+            load.style.display = "none";
+        }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+/* Carousel styling */
+#introCarousel,
+.carousel-inner,
+.carousel-item,
+.carousel-item.active {
+    height: 100vh;
+}
+
+.carousel-item {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.carousel-item:nth-child(1) {
+    background-image: url('../../../../assets/images/2.jpg');
+}
+
+.carousel-item:nth-child(2) {
+    background-image: url('../../../../assets/images/3.jpg');
+}
+
+.carousel-item:nth-child(3) {
+    background-image: url('../../../../assets/images/1.webp');
+}
+
+h2 {
+    line-height: 65px !important;
+}
+
+ul {
+    width: fit-content !important;
+}
+
+@media screen and (max-width: 771px) {
+    h2 {
+        line-height: 50px !important;
+        font-size: 24 !important;
+    }
+
+    ul {
+        li {
+            font-size: 18px !important;
+
+            i {
+                font: 18px !important;
+            }
+        }
+    }
+}

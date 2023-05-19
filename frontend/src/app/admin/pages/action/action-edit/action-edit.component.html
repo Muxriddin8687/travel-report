@@ -1,0 +1,97 @@
+<div class="container-fluid pb-5">
+
+    <div class="pt-3 mb-5">
+        <h3>Xizmatni tahrirlash</h3>
+        <hr class="my-0">
+    </div>
+
+
+    <form class="w-100" [formGroup]="addForm" (ngSubmit)="update()">
+        <div class="row">
+
+            <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                <label class="form-label">F.I.Sh</label>
+                <input type="text" formControlName="name" placeholder="F.I.Sh" class="form-control mb-4">
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                <label class="form-label">Telefon</label>
+                <input type="text" formControlName="phone" placeholder="Telefon" class="form-control mb-4">
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                <label class="form-label">Yashash manzil</label>
+                <input type="text" formControlName="address" placeholder="Yashash manzil" class="form-control mb-4">
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                <label class="form-label">Sayohat turi</label>
+                <select formControlName="travel_type_id" class="form-select mb-4">
+                    <option value="0" disabled>Sayohat turi</option>
+                    <option value="1">Ichki turizm</option>
+                    <option value="2">Tashqi turizm</option>
+                    <option value="3">Turistik</option>
+                </select>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                <label class="form-label">Odam soni</label>
+                <input type="text" formControlName="person_count" placeholder="Odam soni" class="form-control mb-4">
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                <label class="form-label">Sayohat davomiyligi</label>
+                <input type="text" formControlName="duration" placeholder="Sayohat davomiyligi"
+                    class="form-control mb-4">
+            </div>
+
+        </div>
+
+        <h4 class="text-center">Xizmatlar</h4>
+
+
+        <ng-container formArrayName="items">
+            <ng-container *ngFor="let service_item of formItem.controls; let i = index">
+                <div class="row" *ngIf="addForm.value.items[i]" [formGroupName]="i">
+
+                    <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                        <label class="form-label">Xizmat turi</label>
+                        <select formControlName="service_id" class="form-select mb-4">
+                            <option value="0" selected disabled>Xizmat turini tanlang</option>
+                            <ng-container *ngFor="let service of services">
+                                <option [value]="service.id" [selected]="service.id==addForm.value.items[i]['service_id']">{{ service.name }}</option>
+                            </ng-container>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                        <label class="form-label">Matn</label>
+                        <input type="text" formControlName="comment" [value]="addForm.value.items[i]['comment']" placeholder="Matn" class="form-control mb-4">
+                    </div>
+
+                    <div class="col-sm-11 col-md-5 col-lg-3 mb-4">
+                        <label class="form-label">Narxi</label>
+                        <input type="text" formControlName="price" [value]="addForm.value.items[i]['price']" placeholder="Xizmat narxi" class="form-control mb-4">
+                    </div>
+
+                    <div class="col-sm-1 col-md-1 col-lg-1 mb-4">
+                        <label class="form-label">O'chirish</label>
+                        <button (click)="deleteLesson(i)" type="button" class="btn"><i class="fa fa-trash"></i></button>
+                    </div>
+
+                    <div class="col"><hr></div>
+                </div>
+            </ng-container>
+        </ng-container>
+
+
+
+
+        <div class="text-end my-3">
+            <button (click)="newFormFunction()" type="button" class="btn btn-primary me-2"><i
+                    class="fa fa-plus me-2"></i>Xizmat</button>
+            <button type="submit" class="btn btn-success">Saqlash</button>
+        </div>
+    </form>
+
+</div>

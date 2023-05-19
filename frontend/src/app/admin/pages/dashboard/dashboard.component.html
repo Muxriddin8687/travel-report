@@ -1,0 +1,131 @@
+<div class="container-fluid">
+
+    <div class="pt-3 mb-5">
+        <div class="d-flex justify-content-between align-items-center">
+            <h3 class="mb-0">Ro'yhat</h3>
+            <button data-mdb-toggle="modal" data-mdb-target="#addAction" class="btn btn-success btn-sm" type="button"><i class="fa fa-plus me-1"></i>Sayohat</button>
+        </div>
+        <hr class="my-0">
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover border mb-0">
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Nomi</th>
+                    <th>Telefon</th>
+                    <th>Sayohat turi</th>
+                    <th>Odam soni</th>
+                    <th>Hisob</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let item of actions; let i=index">
+                    <tr>
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.phone }}</td>
+                        <td>{{ item.travel_type_name }}</td>
+                        <td>{{ item.person_count }}</td>
+                        <td>{{ item.summ }}</td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <button [routerLink]="'/admin/action/' + item.id" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></button>
+                                <button (click)="delete(item.id)" class="btn btn-sm btn-danger mx-2"><i class="fa fa-trash"></i></button>
+                                <button (click)="done(item.id)" class="btn btn-sm btn-success"><i class="fa fa-check"></i></button>
+                                <button (click)="showAction(item.id)" data-mdb-toggle="modal" data-mdb-target="#showAction" class="btn btn-light border btn-sm ms-2" type="button"><i class="fa fa-eye"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+
+<!-- add action modal -->
+<div class="modal fade" id="addAction" tabindex="-1" aria-labelledby="addActionLabel" data-mdb-backdrop="static"
+    data-mdb-keyboard="true" aria-hidden="true">
+    <div class="modal-dialog">
+        <form [formGroup]="addForm" (ngSubmit)="addAction()" novalidate>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mx-auto" id="addUnitLabel">Sayohat qo'shish</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="text" formControlName="name" placeholder="F.I.Sh" class="form-control mb-4">
+                    <input type="text" formControlName="phone" placeholder="Telefon" class="form-control mb-4">
+                    <input type="text" formControlName="address" placeholder="Yashash manzil" class="form-control mb-4">
+                    <select formControlName="travel_type_id" class="form-select mb-4">
+                        <option value="0" disabled>Sayohat turi</option>
+                        <option value="1">Ichki turizm</option>
+                        <option value="2">Tashqi turizm</option>
+                        <option value="3">Turistik</option>
+                    </select>
+                    <input type="text" formControlName="person_count" placeholder="Odam soni" class="form-control mb-4">
+                    <input type="text" formControlName="duration" placeholder="Sayohat davomiyligi" class="form-control mb-4">
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-warning" data-mdb-dismiss="modal">Bekor qilish</button>
+                    <button data-mdb-dismiss="modal" type="submit" [disabled]="addForm.invalid" class="btn btn-primary">Saqlash</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<!-- add show modal -->
+<div class="modal fade" id="showAction" tabindex="-1" aria-labelledby="showActionLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mx-auto" id="addUnitLabel">Batafsil ko'rish</h5>
+            </div>
+            <div *ngIf="action.length == 1" class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 mb-4"><b>Ism:</b> {{action[0].name}}</div>
+                    <div class="col-sm-12 col-md-6 mb-4"><b>Telefon:</b> {{action[0].phone}}</div>
+                    <div class="col-sm-12 col-md-6 mb-4"><b>Manzil:</b> {{action[0].address}}</div>
+                    <div class="col-sm-12 col-md-6 mb-4"><b>Odam soni:</b> {{action[0].person_count}}</div>
+                    <div class="col-sm-12 col-md-6 mb-4"><b>Sayohat turi:</b> {{action[0].travel_type_name}}</div>
+                    <div class="col-sm-12 col-md-6 mb-4"><b>Davomiyligi:</b> {{action[0].duration}}</div>
+                    <div class="col-sm-12 col-md-6 mb-4"><b>Umumiy hisob:</b> {{action[0].summ}}</div>
+                    <div class="col-sm-12 col-md-6 mb-4"><b>Sana:</b> {{action[0].date | date:'dd.MMMM.YYYY hh:mm'}}</div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover border mb-0">
+                        <thead>
+                            <tr>
+                                <th>№</th>
+                                <th>Xizmat nomi</th>
+                                <th>Vazifasi</th>
+                                <th>Narxi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let item of action[0]['items']; let i=index">
+                                <tr>
+                                    <td>{{ i + 1 }}</td>
+                                    <td>{{ item.service_name }}</td>
+                                    <td>{{ item.comment }}</td>
+                                    <td>{{ item.price }}</td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="reset" class="btn btn-warning" data-mdb-dismiss="modal">Yopish</button>
+            </div>
+        </div>
+    </div>
+</div>

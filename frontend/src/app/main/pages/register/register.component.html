@@ -1,0 +1,19 @@
+<div style="background-image: url(https://mdbootstrap.com/img/Photos/Others/images/77.jpg);">
+    <div class="container">
+        <div class="w-100 d-flex align-items-center justify-content-center" style="height: 100vh;">
+            <form #f="ngForm" (ngSubmit)="send(f)" >
+                <input type="text" ngModel name="name" placeholder="F.I.Sh" class="form-control mb-4" minlength="4" required>
+                <input type="text" ngModel name="phone" placeholder="Telefon" class="form-control mb-4" minlength="4" required>
+                <input type="text" ngModel name="address" placeholder="Manzil" class="form-control mb-4" minlength="4" required>
+                <input type="text" ngModel name="login" placeholder="Login" class="form-control mb-4" minlength="4" required>
+                <input type="password" ngModel name="password" #pass1 placeholder="Parol" class="form-control mb-4" minlength="4" required>
+                <input type="password" ngModel name="password2" #pass2 placeholder="Parolni takrorlang" class="form-control mb-4" minlength="4" required>
+                <button type="submit" [disabled]="f.invalid" class="btn btn-block btn-dark">Tasdiqlash</button>
+
+                <div class="mt-4 bg-danger text-light py-4 text-center" [class.d-none]="!showError">
+                    <h4 class="mb-0">Parollar mos kelmayapti!</h4>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

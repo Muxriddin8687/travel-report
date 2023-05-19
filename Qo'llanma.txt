@@ -1,0 +1,35 @@
+Loyhani ishga tushirish uchun zarur bo'lgan dasturlar
+
+XAMPP Apache Server dasturi (https://www.apachefriends.org/ru/download.html)
+NODE.JS (https://nodejs.org/en/download)
+
+XAMPP dasturi loyhamizning ma'lumotlar ombori (MySQL) bilan ishlashimizga yordam beradi.
+NODE.JS bizning fontend uchun Angular va backend uchun NestJS da yozgan kodlarimizni ishlatib beradi.
+
+Bu dasturlarni kompyuterga o'rnatib bo'lgach
+1. XAMPP serverni ishga tushiramiz
+2. Brouzerdan localhost/phpmyadmin paneliga kiramiz
+3. "travel_report" nomli ma'lumotlar omborini yaratamiz
+4. "travel_report" nomli ma'lumotlar omboriga kirib "Import" bo'limiga o'tamiz
+5. Loyhamizning asosiy papkasida joylashgan "travel_report.sql" nomli faylini import qilamiz
+
+va shu bilan ma'lumotlar ombori ishga tayyor bo'ladi
+
+NODE.JS npm yordamida kerakli kutubxonalarni o'rnatib olamiz
+1. CLI ochamiz
+2. npm insatll -g @nestjs/cli
+3. npm install -g @angular/cli
+
+Endi backend ni ishga tushiramiz
+1. Loyhamizning asosiy papkasidan backend papkasiga kiramiz vu u yerdan CLI (cmd.exe, powershell.exe)ni ishga tushirmiz
+2. "npm install" buyrug'ini beramiz va kerakli kutubxonalar o'rnatilgunga qadar kompyuterni internet tarmog'idan uzmaymiz
+3. "npm run start" buyrug'ini berib backend ni ham ishga tushirib olamiz
+
+Keyin frontend ni ishga tushiramiz
+1. Loyhamizning asosiy papkasidan frontend papkasiga kiramiz vu u yerdan CLI (cmd.exe, powershell.exe)ni ishga tushirmiz
+2. "npm install" buyrug'ini beramiz va kerakli kutubxonalar o'rnatilgunga qadar kompyuterni internet tarmog'idan uzmaymiz
+3. "npm run start" buyrug'ini berib loyhamizni frontend qismini ham ishga tushirib olamiz
+4. Brouzer ochib “localhost:4200/” portiga kiramiz va loyhamiz ishga tayyor bo’ladi.
+
+
+CLI (Command Line Interface - Qatorli buyruq berish oynasi)

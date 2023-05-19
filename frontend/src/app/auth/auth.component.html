@@ -1,0 +1,18 @@
+<section class="vh-100 d-flex align-items-center justify-content-center">
+    <div class="container">
+        <div class="row h-100">
+            <div class="col-10 col-md-8 col-lg-6 col-xl-4 mx-auto d-flex align-items-center">
+                <form #f="ngForm" (ngSubmit)="login(f)" class="w-100">
+                    <h3 class="text-center mb-5">TravelReports</h3>
+                    <input ngModel name="login" type="text" class="form-control mb-4" placeholder="Login" required minlength="3" />
+                    <input ngModel name="password" type="password" class="form-control mb-4" placeholder="Parol" autocomplete="off" required minlength="3" />
+                    <button [disabled]="f.invalid" type="submit" class="btn btn-primary btn-block">Kirish</button>
+
+                    <div class="mt-4 bg-danger text-light py-4 text-center" [class.d-none]="!showError">
+                        <h4 class="mb-0">Login yoki parol noto'g'ri kiritildi!</h4>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
